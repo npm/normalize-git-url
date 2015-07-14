@@ -17,7 +17,7 @@ test('basic normalization tests', function (t) {
   )
   t.same(
     normalize('git+https://user@hostname:project/blah.git#commit-ish'),
-    { url: 'https://user@hostname:project/blah.git', branch: 'commit-ish' }
+    { url: 'https://user@hostname/project/blah.git', branch: 'commit-ish' }
   )
   t.same(
     normalize('git+ssh://git@github.com:npm/npm.git#v1.0.27'),
