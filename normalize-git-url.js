@@ -1,7 +1,10 @@
 var url = require('url')
 
 module.exports = function normalize (u) {
-  var parsed = url.parse(u, true)
+  var parsed = url.parse(u)
+  // If parsing actually alters the URL, it is almost certainly an
+  // scp-style URL, or an invalid one.
+  var altered = u !== url.format(parsed)
 
   // git is so tricky!
   // if the path is like ssh://foo:22/some/path then it works, but
@@ -17,7 +20,7 @@ module.exports = function normalize (u) {
   parsed.hash = ''
 
   var returnedUrl
-  if (parsed.pathname.match(/\/?:/)) {
+  if (altered) {
     if (u.match(/^git\+https?/) && parsed.pathname.match(/\/?:[^0-9]/)) {
       returnedUrl = u.replace(/^git\+(.*:[^:]+):(.*)/, '$1/$2')
     } else {

@@ -24,6 +24,10 @@ test('basic normalization tests', function (t) {
     { url: 'git@github.com:npm/npm.git', branch: 'v1.0.27' }
   )
   t.same(
+    normalize('git+ssh://git@github.com:/npm/npm.git#v1.0.28'),
+    { url: 'git@github.com:/npm/npm.git', branch: 'v1.0.28' }
+  )
+  t.same(
     normalize('git+ssh://git@github.com:org/repo#dev'),
     { url: 'git@github.com:org/repo', branch: 'dev' }
   )
