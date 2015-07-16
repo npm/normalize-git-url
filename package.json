@@ -1,6 +1,6 @@
 {
   "name": "normalize-git-url",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Normalizes Git URLs. For npm, but you can use it too.",
   "main": "normalize-git-url.js",
   "directories": {
